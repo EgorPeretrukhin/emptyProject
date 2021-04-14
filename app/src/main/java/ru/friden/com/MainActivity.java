@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.front_item: loadFragment(new FrontFragment()); return true;
+                case R.id.front_item: loadFragment(new FrontFragment(warehouseList)); return true;
                 case R.id.back_item: loadFragment(new BackFragment(warehouseList)); return true;
             }
             return false;
