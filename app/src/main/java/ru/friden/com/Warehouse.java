@@ -22,16 +22,16 @@ public class Warehouse {
         this.name = name;
     }
 
-    public double getPrice() {
-        return price;
+    public String getPrice() {
+        return String.valueOf(price);
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getQuantity() {
+        return String.valueOf(quantity);
     }
 
     public void setQuantity(int quantity) {
