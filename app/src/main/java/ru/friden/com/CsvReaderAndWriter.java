@@ -1,41 +1,40 @@
 package ru.friden.com;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import android.content.Context;
+import android.content.res.AssetManager;
+import com.opencsv.CSVReader;
+import ru.friden.com.Warehouse;
+
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CsvReaderAndWriter {
-    private List<Warehouse> warehouseArrayList = new ArrayList<>();
-    private String FILE_PATH = ".\\app\\src\\main\\res\\raw\\data.csv";
+    private List<Warehouse> warehouseList = new ArrayList<>();
+    private Context context;
 
-    public static void main(String[] args) {
-        CsvReaderAndWriter csvReaderAndWriter = new CsvReaderAndWriter();
-        csvReaderAndWriter.readCsvFile();
+    public CsvReaderAndWriter(Context context) {
+        this.context = context;
     }
 
-    void readCsvFile() {
+    public void readFileCsv() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_PATH));
-            String line = "";
-            while ((line = bufferedReader.readLine()) != null) {
-                Warehouse warehouse = new Warehouse();
-//                System.out.println(line);
-                String[] atrr = line.replace("\"", "").split(",");
-//                System.out.println(Arrays.toString(atrr));
-                warehouse.setName(atrr[0]);
-                warehouse.setPrice(Double.parseDouble(atrr[1].trim()));
-                warehouse.setQuantity(Integer.parseInt(atrr[2].trim()));
-                warehouseArrayList.add(warehouse);
-            }
-            bufferedReader.close();
-            for (Warehouse warehouse : warehouseArrayList) {
-                System.out.println(warehouse.toString());
+            AssetManager assetManager = context.getAssets();
+            InputStream inputStream = assetManager.open("data.csv");
+            CSVReader reader = new CSVReader(new InputStreamReader(inputStream));
+            List<String[]> myEntries = reader.readAll();
+            for (String[] myEntry : myEntries) {
+                Warehouse warehouse = new Warehouse(myEntry[0], Double.parseDouble(myEntry[1]), Integer.parseInt(myEntry[2]));
+                warehouseList.add(warehouse);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Warehouse> getWarehouseList() {
+        return warehouseList;
     }
 }
