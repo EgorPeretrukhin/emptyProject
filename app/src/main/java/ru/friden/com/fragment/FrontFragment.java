@@ -31,6 +31,7 @@ public class FrontFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        view.findViewById(R.id.include).setVisibility(View.INVISIBLE);
         ViewPager2 viewPager2 = view.findViewById(R.id.view_pager);
         viewPager2.setAdapter(new WareHouseFrontAdapter(getContext(), warehouseList));
     }

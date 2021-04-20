@@ -12,30 +12,31 @@ import ru.friden.com.adapter.WareHouseBackAdapter;
 
 import java.util.List;
 
-public class BackFragment extends Fragment {
+public class BackAddFragment extends Fragment {
     private List<Warehouse> warehouseList;
 
-    public BackFragment(List<Warehouse> warehouseList) {
+    public BackAddFragment(List<Warehouse> warehouseList) {
         this.warehouseList = warehouseList;
     }
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.back_toolbar_menu,menu);
+//        inflater.inflate(R.menu.back_toolbar_menu,menu);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.back_fragment, container, false);
+        //setHasOptionsMenu(true);
+        return inflater.inflate(R.layout.back_add_fragment, container, false);
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList));
+        //RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+//        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList));
     }
+
 
 }

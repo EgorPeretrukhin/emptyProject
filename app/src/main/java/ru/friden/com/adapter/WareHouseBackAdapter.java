@@ -5,18 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.friden.com.R;
 import ru.friden.com.Warehouse;
 
 import java.util.List;
 
-public class WareHouseAdapter extends RecyclerView.Adapter<WareHouseAdapter.WarehouseVh> {
+public class WareHouseBackAdapter extends RecyclerView.Adapter<WareHouseBackAdapter.WarehouseVh> {
     private Context context;
     private List<Warehouse> warehouseList;
 
-    public WareHouseAdapter(Context context, List<Warehouse> warehouseList) {
+    public WareHouseBackAdapter(Context context, List<Warehouse> warehouseList) {
         this.warehouseList = warehouseList;
         this.context = context;
     }
@@ -47,6 +52,13 @@ public class WareHouseAdapter extends RecyclerView.Adapter<WareHouseAdapter.Ware
 
         public WarehouseVh(@NonNull View itemView) {
             super(itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction fragmentTransaction;
+                    Toast.makeText(v.getContext(), "1234", Toast.LENGTH_SHORT).show();
+                }
+            });
             tvModel = itemView.findViewById(R.id.tv_item_model);
             tvQuantity = itemView.findViewById(R.id.tv_item_quantity);
         }
