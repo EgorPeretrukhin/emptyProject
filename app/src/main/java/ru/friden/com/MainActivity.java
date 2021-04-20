@@ -1,12 +1,9 @@
 package ru.friden.com;
 
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        bottomNavigationView.setSelectedItemId(R.id.front_item);
     }
 
-    private void loadFragment(Fragment fragment) {
+    public void loadFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();

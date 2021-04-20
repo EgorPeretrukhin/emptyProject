@@ -31,11 +31,19 @@ public class BackFragment extends Fragment {
         return inflater.inflate(R.layout.back_fragment, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList));
+        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList, getFragmentManager()));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_layout, new BackAddFragment(warehouseList))
+                .commit();
+        return true;
     }
 
 }

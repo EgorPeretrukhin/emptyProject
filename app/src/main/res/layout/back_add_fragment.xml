@@ -1,82 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 
-	<TextView
-		android:id="@+id/tv_back_model"
-		android:layout_width="0dp"
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/textInputLayout3"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
+		android:layout_marginStart="32dp"
 		android:layout_marginTop="32dp"
-		android:layout_marginEnd="8dp"
-		android:text="Model"
+		android:layout_marginEnd="32dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent" />
+		app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
-	<EditText
-		android:id="@+id/et_model"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
-		android:layout_marginEnd="8dp"
-		android:ems="10"
-		android:inputType="textPersonName"
-		android:text="Enter model name"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/tv_back_model" />
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/text_input_quantity"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Quantity"
+			android:inputType="number" />
+	</com.google.android.material.textfield.TextInputLayout>
 
-	<TextView
-		android:id="@+id/tv_back_price"
-		android:layout_width="0dp"
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/textInputLayout"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
-		android:layout_marginEnd="8dp"
-		android:text="Price"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="32dp"
+		android:layout_marginEnd="32dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_model" />
+		app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
-	<EditText
-		android:id="@+id/et_price"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:ems="10"
-		android:hint="Enter price"
-		android:inputType="textPersonName"
-		android:text="price"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/tv_back_price" />
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/text_input_price"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Price"
+			android:inputType="number|numberDecimal" />
+	</com.google.android.material.textfield.TextInputLayout>
 
-	<TextView
-		android:id="@+id/textView6"
-		android:layout_width="0dp"
+	<com.google.android.material.textfield.TextInputLayout
+		android:id="@+id/textInputLayout2"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginTop="8dp"
-		android:text="Quantity"
+		android:layout_marginStart="32dp"
+		android:layout_marginTop="32dp"
+		android:layout_marginEnd="32dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/et_price" />
+		app:layout_constraintTop_toTopOf="parent">
 
-	<EditText
-		android:id="@+id/et_quantity"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="8dp"
-		android:ems="10"
-		android:inputType="textPersonName"
-		android:text="Name"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/textView6" />
+		<com.google.android.material.textfield.TextInputEditText
+			android:id="@+id/text_input_model"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="Model"
+			android:inputType="text" />
+	</com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
