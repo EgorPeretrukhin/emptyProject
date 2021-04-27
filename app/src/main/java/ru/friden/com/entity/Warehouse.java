@@ -1,14 +1,24 @@
-package ru.friden.com;
+package ru.friden.com.entity;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Warehouse {
+
+    @PrimaryKey 
+    @NonNull
     private String name;
     private double price;
     private int quantity;
-
-    public Warehouse() {
+    @Ignore
+    public Warehouse(@NonNull String name) {
+        this.name = name;
     }
 
-    public Warehouse(String name, double price, int quantity) {
+    public Warehouse(@NonNull String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
@@ -18,19 +28,27 @@ public class Warehouse {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NonNull String name) {
         this.name = name;
     }
 
-    public String getPrice() {
+    public String getPriceToString() {
         return String.valueOf(price);
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
-    public String getQuantity() {
+    public String getQuantityToString() {
         return String.valueOf(quantity);
     }
 
@@ -38,6 +56,12 @@ public class Warehouse {
         this.quantity = quantity;
     }
 
+    public void incrementQuantity() {
+        this.quantity++;
+    }
+    public void decrementQuantity() {
+        this.quantity--;
+    }
     @Override
     public String toString() {
         return "name='" + name + '\'' +

@@ -7,8 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.friden.com.R;
-import ru.friden.com.Warehouse;
-import ru.friden.com.adapter.WareHouseBackAdapter;
+import ru.friden.com.entity.Warehouse;
+import ru.friden.com.adapters.WareHouseBackAdapter;
 
 import java.util.List;
 
