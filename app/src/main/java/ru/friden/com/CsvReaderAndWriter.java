@@ -3,7 +3,7 @@ package ru.friden.com;
 import android.content.Context;
 import android.content.res.AssetManager;
 import com.opencsv.CSVReader;
-import ru.friden.com.Warehouse;
+import ru.friden.com.entity.Warehouse;
 
 import java.io.IOException;
 import java.io.InputStream;

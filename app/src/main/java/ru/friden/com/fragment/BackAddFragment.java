@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import ru.friden.com.R;
-import ru.friden.com.Warehouse;
+import ru.friden.com.entity.Warehouse;
 
 import java.util.List;
 
@@ -38,9 +38,9 @@ public class BackAddFragment extends Fragment {
             TextView textViewModel = view.findViewById(R.id.text_input_model);
             textViewModel.setText(warehouse.getName());
             TextView textViewPrice = view.findViewById(R.id.text_input_price);
-            textViewPrice.setText(warehouse.getPrice());
+            textViewPrice.setText(warehouse.getPriceToString());
             TextView textViewQuantity = view.findViewById(R.id.text_input_quantity);
-            textViewQuantity.setText(warehouse.getQuantity());
+            textViewQuantity.setText(warehouse.getQuantityToString());
         }
     }
 
