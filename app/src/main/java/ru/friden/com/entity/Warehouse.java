@@ -1,22 +1,26 @@
 package ru.friden.com.entity;
 
 import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "warehouse")
 public class Warehouse {
 
     @PrimaryKey 
     @NonNull
+    @ColumnInfo(name = "name")
     private String name;
+    @ColumnInfo(name = "price")
     private double price;
+    @ColumnInfo(name = "quantity")
     private int quantity;
-    @Ignore
-    public Warehouse(@NonNull String name) {
-        this.name = name;
-    }
+//    @Ignore
+//    public Warehouse(@NonNull String name) {
+//        this.name = name;
+//    }
 
     public Warehouse(@NonNull String name, double price, int quantity) {
         this.name = name;

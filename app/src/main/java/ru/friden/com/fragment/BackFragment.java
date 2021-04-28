@@ -7,8 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import ru.friden.com.R;
-import ru.friden.com.entity.Warehouse;
 import ru.friden.com.adapters.WareHouseBackAdapter;
+import ru.friden.com.entity.Warehouse;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class BackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList, getFragmentManager()));
+        recyclerView.setAdapter(new WareHouseBackAdapter(getContext(), warehouseList, getChildFragmentManager()));
     }
 
     @Override

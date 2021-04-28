@@ -10,17 +10,16 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 import ru.friden.com.R;
+import ru.friden.com.adapters.WareHouseFrontAdapter;
 import ru.friden.com.database.WarehouseViewModel;
 import ru.friden.com.entity.Warehouse;
-import ru.friden.com.adapters.WareHouseFrontAdapter;
 
 import java.util.List;
 
 public class FrontFragment extends Fragment {
     private List<Warehouse> warehouseList;
 
-    public FrontFragment(List<Warehouse> warehouseList) {
-        this.warehouseList = warehouseList;
+    public FrontFragment() {
     }
 
     @Nullable
@@ -32,12 +31,23 @@ public class FrontFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         ViewPager2 viewPager2 = view.findViewById(R.id.view_pager);
-        viewPager2.setAdapter(new WareHouseFrontAdapter(getContext(), warehouseList));
+        if (warehouseList != null) {
+
+            viewPager2.setAdapter(new WareHouseFrontAdapter(getContext(), warehouseList));
+        }
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WarehouseViewModel warehouseViewModel = new ViewModelProvider(requireActivity()).get(WarehouseViewModel.class);
+        warehouseViewModel.getLiveWarehouseList().observe(this, warehouses -> warehouseList = warehouses);
+
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

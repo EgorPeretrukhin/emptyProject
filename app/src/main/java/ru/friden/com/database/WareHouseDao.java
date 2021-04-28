@@ -18,7 +18,7 @@ public interface WareHouseDao {
     @Delete
     void delete(Warehouse warehouse);
 
-    @Query("DELETE FROM Warehouse")
+    @Query("DELETE FROM warehouse")
     void deleteAll();
 
     @Query("SELECT * FROM warehouse")

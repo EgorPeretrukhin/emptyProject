@@ -6,14 +6,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.room.Room;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import ru.friden.com.database.WarehouseDataBase;
 import ru.friden.com.database.WarehouseViewModel;
 import ru.friden.com.entity.Warehouse;
 import ru.friden.com.fragment.BackFragment;
 import ru.friden.com.fragment.FrontFragment;
 
 import java.util.List;
+
+import static ru.friden.com.database.WarehouseDataBase.getRoomDataBaseCallBack;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.front_item:
-                    loadFragment(new FrontFragment(warehouseList));
+                    loadFragment(new FrontFragment());
                     return true;
                 case R.id.back_item:
                     loadFragment(new BackFragment(warehouseList));
@@ -42,19 +47,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        import data into csv file
-        CsvReaderAndWriter csvReaderAndWriter = new CsvReaderAndWriter(this);
-        csvReaderAndWriter.readFileCsv();
-        warehouseList = csvReaderAndWriter.getWarehouseList();
+//        CsvReaderAndWriter csvReaderAndWriter = new CsvReaderAndWriter(this);
+//        csvReaderAndWriter.readFileCsv();
+//        warehouseList = csvReaderAndWriter.getWarehouseList();
 
         //ViewModel
-//        warehouseViewModel = new ViewModelProvider(this).get(WarehouseViewModel.class);
-//
-//        //Room
+        warehouseViewModel = new ViewModelProvider(this).get(WarehouseViewModel.class);
+
+        //Room
 //        WarehouseDataBase warehouseDataBase = Room.databaseBuilder(this, WarehouseDataBase.class, "qwerty")
 //                .addCallback(getRoomDataBaseCallBack()).build();
-//        //LiveData
-//        LiveData<List<Warehouse>> warehouseListLiveData = warehouseDataBase.getWarehouseDao().getAllWarehouse();
-//        warehouseListLiveData.observe(this, warehouses -> warehouseList = warehouses);
+//        LiveData
+        LiveData<List<Warehouse>> warehouseListLiveData = warehouseViewModel.getLiveWarehouseList();
+        warehouseListLiveData.observe(this, warehouses -> warehouseList = warehouses);
 
         //Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

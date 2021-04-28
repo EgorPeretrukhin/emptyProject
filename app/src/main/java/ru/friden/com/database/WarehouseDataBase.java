@@ -27,7 +27,7 @@ public abstract class WarehouseDataBase extends RoomDatabase {
             super.onCreate(db);
             dataBaseExecutorService.execute(() -> {
                 WareHouseDao wareHouseDao = INSTANSE.getWarehouseDao();
-//                wareHouseDao.deleteAll();
+                wareHouseDao.deleteAll();
                 wareHouseDao.insert(new Warehouse("Samsung", 1230, 2));
                 wareHouseDao.insert(new Warehouse("Apple", 1567, 1));
                 wareHouseDao.insert(new Warehouse("Xiaomi", 123000, 0));
@@ -39,7 +39,8 @@ public abstract class WarehouseDataBase extends RoomDatabase {
         if (INSTANSE == null) {
             synchronized (WarehouseDataBase.class) {
                 if (INSTANSE == null) {
-                    INSTANSE = Room.databaseBuilder(context.getApplicationContext(), WarehouseDataBase.class, "data").build();
+                    INSTANSE = Room.databaseBuilder(context.getApplicationContext(), WarehouseDataBase.class, "data")
+                            .addCallback(getRoomDataBaseCallBack()).build();
                 }
             }
         }
